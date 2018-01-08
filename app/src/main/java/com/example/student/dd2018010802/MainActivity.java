@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Map<String, String>> mylist = new ArrayList<>();
+    ArrayList<Map<String, Object>> mylist = new ArrayList<>();
     ListView lv;
 
     @Override
@@ -19,25 +19,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lv = findViewById(R.id.listView);
 
-        HashMap<String, String> m1 = new HashMap<>();
+        HashMap<String, Object> m1 = new HashMap<>();
         m1.put("city", "台北");
         m1.put("code", "02");
+        m1.put("image", R.drawable.tpe);
         mylist.add(m1);
-        HashMap<String, String> m2 = new HashMap<>();
+        HashMap<String, Object> m2 = new HashMap<>();
         m2.put("city", "台中");
         m2.put("code", "04");
+        m2.put("image", R.drawable.tc);
         mylist.add(m2);
-        HashMap<String, String> m3 = new HashMap<>();
+        HashMap<String, Object> m3 = new HashMap<>();
         m3.put("city", "台南");
         m3.put("code", "06");
+        m3.put("image", R.drawable.tn);
         mylist.add(m3);
+        HashMap<String, Object> m4 = new HashMap<>();
+        m4.put("city", "高雄");
+        m4.put("code", "08");
+        m4.put("image", R.drawable.kh);
+        mylist.add(m4);
 
         SimpleAdapter adapter = new SimpleAdapter(
                 MainActivity.this,
                 mylist,
-                android.R.layout.simple_list_item_2,
-                new String[] {"city", "code"},
-                new int[] {android.R.id.text1, android.R.id.text2}
+                R.layout.layout1,
+                new String[] {"city", "code", "image"},
+                new int[] {R.id.textView, R.id.textView2, R.id.imageView}
         );
         lv.setAdapter(adapter);
     }
